@@ -1,0 +1,267 @@
+body {
+    background-color: white;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#cv-page {
+    display: grid;
+    grid-template-areas:
+    "head    head"
+    "main    main"
+    "foot    foot";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6px;
+}
+
+#cv-page > header {
+    grid-area: head;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    border: 5px solid #aaa;
+}
+
+#cv-page > main {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+    "about    exp"
+    "skill    exp"
+    "interest exp";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 6px;
+}
+
+#cv-page > footer {
+    grid-area: foot;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+    text-align: center;
+    padding: 5px 0 0 0;
+}
+
+.photo {
+    border: 4px solid #aaa;
+    border-radius: 50%;
+    margin: 5px 20px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.contact-item {
+    margin: 0 10px;
+    padding: 0;
+}
+
+.about {
+    grid-area: about;
+    background-color: #aaa;
+    padding: 0 10px;
+    text-align: justify;
+}
+
+.skill {
+    grid-area: skill;
+    background-color: #ddd;
+    padding: 0 1vw;
+}
+
+.skill-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.skill-container {
+    width: 80%;
+    height: 2.2em;
+    margin: 10px 0 5px 10px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 6px;
+}
+
+.skill-bar {
+    text-align: right;
+    height: 2.0em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.html {
+    width: 80%;
+    background-color: #aaa;
+}
+
+.css {
+    width: 70%;
+    background-color: #aaa;
+}
+
+.js {
+    width: 60%;
+    background-color: #aaa;
+}
+
+.python {
+    width: 70%;
+    background-color: #aaa;
+}
+
+.interest {
+    grid-area: interest;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #aaa;
+    padding: 0 10px;
+}
+
+.interest-element {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon {
+    vertical-align: center;
+    margin: 5px 0 0 5px;
+    height: 25px;
+}
+
+.experience {
+    grid-area: exp;
+    background-color: #aaa;
+    padding: 0 10px 5px 10px;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 7%;
+    margin-left: -3px;
+}
+
+/* Container for the timeline around content */
+.exp-container {
+    padding: 5px 10px 5px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 93%;
+}
+
+/* The circles on the timeline */
+.exp-container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #b00;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Place the container (timeline) to the right */
+.right {
+    left: 7%;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side of timeline */
+.right::after {
+    left: -16px;
+}
+
+/* The actual content for the timeline */
+.exp-content {
+    padding: 1px 10px 8px 10px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+}
+
+/* Responsive header on screens less than 1200px wide */
+@media screen and (max-width: 1200px) {
+    #cv-page > header {
+        flex-direction: column;
+    }
+
+    .contact {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .contact-item {
+        text-align: center;
+    }
+}
+
+/* Responsive main on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+    #cv-page > main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about {
+        order: 1;
+    }
+
+    .experience {
+        order: 2;
+    }
+
+    .skill {
+        order: 3;
+    }
+
+    .interest {
+        order: 4;
+    }
+}
